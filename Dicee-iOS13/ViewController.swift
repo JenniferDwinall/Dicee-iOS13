@@ -9,31 +9,29 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var diceImageView1: UIImageView!
-
+    
     @IBOutlet weak var diceImageView2: UIImageView!
+
     
-    var leftDiceIndex = 1
-    var rightDiceIndex = 5
-    
-    var arrayDice = [UIImage(named: "DiceOne"),
+    let arrayDice = [UIImage(named: "DiceOne"),
                      UIImage(named: "DiceTwo"),
                      UIImage(named: "DiceThree"),
                      UIImage(named: "DiceFour"),
                      UIImage(named: "DiceFive"),
                      UIImage(named: "DiceSix")]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
     @IBAction func rollButtonPressed(_ sender: UIButton) {
-        diceImageView1.image = arrayDice[leftDiceIndex]
-        leftDiceIndex = leftDiceIndex + 1
+        var img = arrayDice.randomElement()
+        if img != nil {
+            diceImageView1.image = img!
+        }
+        img = arrayDice.randomElement()
+        if img != nil {
+            diceImageView2.image = img!
+        }
         
-        diceImageView2.image = arrayDice[rightDiceIndex]
-        rightDiceIndex = rightDiceIndex - 1
     }
+    
 }
